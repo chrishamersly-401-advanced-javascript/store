@@ -10,11 +10,13 @@ let initialState = {
   activeProductDescription: 'Self explanatory',
 
   products : [
+    {id: 233, name:'self folding washing machine', manufacturer:'Maytag', model:'selfffff', price: 330.11, inStock:2, weight: 100.2},
     { id: 12345, name:'camera',  manufacturer:'Nikon', model:'xx435', price: 99.99, inStock: 2200, weight: 1.1 },
     { id: 32112, name:'telescope', manufacturer: 'Hubble', model: 'HUBB22', price:122.00, inStock: 23, weight: 15},
   ],
 
   categories: [
+    {name: 'electronics', description: 'the electronic description'},
     { name : 'bicycles', description: 'the most fun'},
     { name : 'clothes', description: 'so much work to keep clean'},
   ]
@@ -32,11 +34,12 @@ export default (state=initialState, action) => {
 
   switch(type) {
 
-    case 'CHANGE':
-      let displayedProducts = state.products.filter(product => {
-        return product.category === payload;
-      })
-      return {...state, displayedProducts}
+    case 'CATEGORY':
+      return{...state, activeCategory: payload}
+
+    case 'DESCRIPTION':
+      return{...state, activeCategoryDescription:payload}
+    
     default: 
       return state;
 
@@ -47,3 +50,16 @@ export default (state=initialState, action) => {
 //TODO
 //define action creators / action objects
 
+export const category = name => {
+  return {
+    type: 'CATEGORY',
+    payload: name,
+  }
+}
+
+export const categoryDescription = name => {
+  return {
+    type:'DESCRIPTION',
+    payload: name,
+  }
+}

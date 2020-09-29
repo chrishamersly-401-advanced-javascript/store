@@ -61,7 +61,7 @@ function Products(props) {
       {/* In other words, 1 accross, 2 accross, or 3 accross */}
       <Grid item xs={12} sm={6} md={4}>
         <Card>
-            <CardMedia background image="https://en.wikipedia.org/wiki/Mount_Rainier#/media/File:Mount_Rainier_from_west.jpg">
+            <CardMedia background-image="https://en.wikipedia.org/wiki/Mount_Rainier#/media/File:Mount_Rainier_from_west.jpg">
        
             </CardMedia>
           <CardContent> 
