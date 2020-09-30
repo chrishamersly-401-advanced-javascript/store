@@ -6,6 +6,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
+import SimpleCart from '../cart/cart';
+
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -48,9 +50,7 @@ function Header() {
         Our Store
         </Typography>
         <nav>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Cart(0)
-            </Link>
+        <SimpleCart />
           </nav>
           <Button href="#" color="default" variant="outlined" className={classes.link}>
             Login

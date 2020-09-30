@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
-import { category } from '../../store/products'
+import { category } from '../../store/categories'
 
 
 
@@ -74,7 +74,8 @@ function Categories(props) {
 
 const mapStateToProps = (state) => {
   return {
-    categories: state.products.categories,
+    categories: state.categories.categories,
+    description: state.categories.description,
    
     
     
