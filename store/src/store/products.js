@@ -1,23 +1,21 @@
 //this style is called a dux  
 //bundling together of concerns
 
+import products from "../components/products/products";
+
 //define initial state
 
 let initialState = {
-  activeCategory: 'electronics',
-  activeCategoryDescription: 'the electronic description',
-  activeProduct: 'self folding washing machine',
-  activeProductDescription: 'Self explanatory',
+  activeProduct: 'here',
+  activeProductDescription: 'From the products ',
 
   products : [
-    { id: 12345, name:'camera',  manufacturer:'Nikon', model:'xx435', price: 99.99, inStock: 2200, weight: 1.1 },
-    { id: 32112, name:'telescope', manufacturer: 'Hubble', model: 'HUBB22', price:122.00, inStock: 23, weight: 15},
+    {id: 233, name:'self folding washing machine', manufacturer:'Maytag', model:'selfffff', price: '$330.11', inStock:2, weight: 100.2,category:'electronics', description:'folds the clothes for you'},
+    { id: 12345, name:'camera',  manufacturer:'Nikon', model:'xx435', price: '$99.99', instock: 2200, weight: 1.1, category:'electronics', description: 'takes great photos' },
+    { id: 32112, name:'telescope', manufacturer: 'Hubble', model: 'HUBB22', price:'$122.00', inStock: 23, weight: 15, category:'electronics', description: 'see the moon'},
+    
   ],
 
-  categories: [
-    { name : 'bicycles', description: 'the most fun'},
-    { name : 'clothes', description: 'so much work to keep clean'},
-  ]
 }
 
 
@@ -32,11 +30,12 @@ export default (state=initialState, action) => {
 
   switch(type) {
 
-    case 'CHANGE':
-      let displayedProducts = state.products.filter(product => {
-        return product.category === payload;
-      })
-      return {...state, displayedProducts}
+    case 'PRODUCT':
+      return{...state, activeProduct: payload}
+
+    case 'DESCRIPTION':
+      return{...state, activeCategoryDescription:payload}
+    
     default: 
       return state;
 
@@ -47,3 +46,16 @@ export default (state=initialState, action) => {
 //TODO
 //define action creators / action objects
 
+export const product = name => {
+  return {
+    type: 'CATEGORY',
+    payload: name,
+  }
+}
+
+export const productDescription = name => {
+  return {
+    type:'DESCRIPTION',
+    payload: name,
+  }
+}

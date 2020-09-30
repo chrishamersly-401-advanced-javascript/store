@@ -1,8 +1,12 @@
 import React from 'react';
 // import Container from '@material-ui/core/Container';
-// import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@material-ui/core/Button';
+import { category } from '../../store/categories'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,29 +47,43 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Categories(props) {
-
+  console.log('categories map', props.categories)
   const classes = useStyles();
   
   return (
     <>
-    <h1>{props.activeCategorytoRender}</h1>
-    {/* //TODO map over the categories array and get all of the categories and render them.  */}
-    {/* <a link href="">here:{props.activeCategorytoRender}</a>
-    <a link href="">{props.activeCategorytoRender}</a> */}
+    {/* <h1>{props.activeCategorytoRender}</h1> */}
+    <div className={classes.categories}>
+      <Typography variant="h5"> Browse Our Categories: {props.category}</Typography>
+      
+      <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+        {props.categories.map(cat =>
+          <Button
+            key={cat._id}
+            color="primary"
+            onClick={() => props.category(cat.name)}
+          >
+            {cat.displayName || cat.name}
+          </Button>
+        )}
+      </ButtonGroup>
+    </div>
     </>
   )
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.products.categories)
   return {
-    activeCategorytoRender: state.products.categories.name,
+    categories: state.categories.categories,
+    description: state.categories.description,
    
     
     
   }
 }
 
+const mapDispatchToProps = { category: category }
 
-export default connect(mapStateToProps)(Categories)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories)
 

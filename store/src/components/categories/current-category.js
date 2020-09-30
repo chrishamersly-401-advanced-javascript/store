@@ -71,8 +71,8 @@ function CurrentCategory(props) {
 //the variable name. 
 const mapStateToProps = (state) => {
   return {
-    activeCategory: state.products.activeCategory,
-    activeCategoryDescription : state.products.activeCategoryDescription
+    activeCategory: state.categories.activeCategory,
+    activeCategoryDescription : state.categories.activeCategoryDescription
   }
 }
 
