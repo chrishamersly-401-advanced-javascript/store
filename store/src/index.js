@@ -8,9 +8,11 @@ import store from './store/';
 
 function Main() {
   return (
+    <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
+    </React.StrictMode>
   );
 }
 
