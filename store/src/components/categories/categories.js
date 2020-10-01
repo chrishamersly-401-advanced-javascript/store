@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 // import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
-import { category } from '../../store/categories'
+import { category, categoryDescription } from '../../store/categories'
 
 
 
@@ -43,7 +43,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
+// export const Categories = (props) => {
+//   useEffect(() => {
+//     props.getCategories();
+//   }, [props])
+// }
 
 
 function Categories(props) {
@@ -82,7 +86,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = { category: category }
+const mapDispatchToProps = { category: category , categoryDescription:categoryDescription}
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories)

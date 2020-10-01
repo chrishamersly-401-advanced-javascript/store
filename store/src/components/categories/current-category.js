@@ -57,7 +57,7 @@ function CurrentCategory(props) {
     {props.activeCategory}
     </Typography>
     <Typography variant="h5" align="center" color="textSecondary" component="p">
-    {props.activeCategoryDescription}
+    {/* {props.activeCategoryDescription} */}
     </Typography>
   </Container>
   )

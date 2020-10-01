@@ -1,13 +1,13 @@
 //this style is called a dux  
 //bundling together of concerns
 
-import { product } from "./products";
+// import { product } from "./products";
 
 //define initial state
 
 let initialState = {
   cartItems: [],
-  // initialPrice: '$9.99',
+  totalPrice: 0,
  
 
 }
@@ -18,19 +18,24 @@ export default (state=initialState, action) => {
 
   switch(type) {
 
-    //adding the entire product object
     case 'ADDTOCART':
-      let cartItems = payload;
-      console.log('clicking');
-      console.log(payload)
-      
-      return cartItems;
+     let newCart = [...state.cartItems, payload];
+     let price = state.totalPrice + payload.price
 
-    case 'RESET':
-      return initialState;
+
+      return {
+        cartItems : newCart,
+        totalPrice : price,
+      }
+
+    // case 'REMOVE':
+    //   return initialState;
     
     default: 
       return state;
+
+    //   case 'SHOW_DETAILS':
+    //     return [...state.cartItems, payload]
 
   }
 }
@@ -55,7 +60,7 @@ export const resetCart = name => {
 
 export const showDetails = product => {
   return {
-    type:'SHOWDETAILS',
+    type:'SHOW_DETAILS',
     payload: product,
   }
 }

@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Cart(props) {
-
+console.log('props', props.cartItems)
   const classes = useStyles();
   return (
     <>
     <nav>
             <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Cart({props.items.length})
+              Cart({props.cartItems.length})
             </Link>
             {/* <h1>{props.initialPrice}</h1> */}
           </nav>
@@ -38,12 +38,12 @@ function Cart(props) {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.cart.cartItems, 
+const mapStateToProps = (state) => ({
+  
+    cartItems: state.cart.cartItems, 
     // initialPrice: state.cart.initialPrice  
   }
-}
+)
 
 
 

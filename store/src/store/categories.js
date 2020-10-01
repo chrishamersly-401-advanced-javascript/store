@@ -1,22 +1,52 @@
-//this style is called a dux  
-//bundling together of concerns
+import axios from 'axios';
 
-//define initial state
 
-let initialState = {
-  activeCategory: 'electronics',
-  activeCategoryDescription: 'the electronic description',
-  // activeProduct: 'from the categories',
-  // activeProductDescription: 'From the categories',
+// let initialState = {
+//   activeCategory: 'electronics',
+//   activeCategoryDescription: 'the electronic description',
+//   // activeProduct: 'from the categories',
+//   // activeProductDescription: 'From the categories',
 
   
-  categories: [
-    {name: 'electronics', description: 'the electronic description'},
-    { name : 'bicycles', description: 'the most fun'},
-    { name : 'clothes', description: 'so much work to keep clean'},
-  ]
+//   categories: [
+//     {name: 'electronics', description: 'the electronic description'},
+//     { name : 'bicycles', description: 'the most fun'},
+//     { name : 'clothes', description: 'so much work to keep clean'},
+//   ]
+// }
+
+                       //---------->    from lab demo   <----------//
+const initialState = {categories: [], activeCategory:''};
+
+
+function categoryReducer(state=initialState, action) {
+
+  switch(action.type) {
+
+    case 'CHANGE_CATEGORY':
+    return {...state, activeCategory: action.payload}
+
+    default: 
+    return state;
+
+    case 'UPDATE_CATEGORIES':
+      return{...state, categories: action.payload}
+  }
+
 }
 
+export function getCategories() {
+ 
+  return async function (dispatch) {
+    const response =  await axios.get('https://api')
+    dispatch({
+      type: 'UPDATE_CATEGORIES', 
+      payload: response.data.results
+    })
+  }
+}
+
+                      //----------->        END      <--------------//
 export default (state=initialState, action) => {
 
   const { type, payload } = action;
